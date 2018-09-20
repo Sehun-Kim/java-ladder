@@ -3,27 +3,14 @@ package laddergame.view;
 import laddergame.domain.Line;
 
 import java.util.List;
-import java.util.Scanner;
 
-public class LadderView {
+public class ResultView {
 
     static final String NONE = "     ";
     static final String HORIZONTAL = "-----";
     static final String VERTICAL = "|";
 
     static final int NAMELENLIMIT = 6;
-
-
-    public static int inputNum() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
-    }
-
-    public static String[] inputPeople() {
-        Scanner sc = new Scanner(System.in);
-        String people = sc.nextLine();
-        return people.split(",");
-    }
 
     public static int printPeopleLength(String[] people) {
         for (int i = 0; i < people.length; i++) {
@@ -49,31 +36,27 @@ public class LadderView {
         }
     }
 
-    public static String drawLine(List<Integer> line) {
+    public static String drawLine(List<Boolean> line) {
         StringBuilder sb = new StringBuilder();
 
-        for (int point : line) {
-            sb.append(checkPoint(point));
+        for (int i = 0; i < (2 * line.size()) + 1; i++) {
+            sb.append(checkPoint(i, line));
         }
         return sb.toString();
     }
 
-    public static String checkPoint(int point) {
-        StringBuilder sb = new StringBuilder();
-
-        switch (point) {
-            case Line.HORIZONTAL:
-                sb.append(HORIZONTAL);
-                break;
-            case Line.NONE:
-                sb.append(NONE);
-                break;
-            case Line.VERTICAL:
-                sb.append(VERTICAL);
-                break;
-            default:
-                break;
+    public static String checkHorizon(int point, List<Boolean> line) {
+        if (line.get((point - 1) / 2)) {
+            return HORIZONTAL;
         }
-        return sb.toString();
+        return NONE;
     }
+
+    public static String checkPoint(int point, List<Boolean> line) {
+        if (point % 2 == 0) {
+            return VERTICAL;
+        }
+        return checkHorizon(point, line);
+    }
+
 }

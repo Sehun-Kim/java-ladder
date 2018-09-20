@@ -5,43 +5,35 @@ import java.util.Collections;
 import java.util.List;
 
 public class Line {
-    public static final int HORIZONTAL = 2; // 가로
-    public static final int VERTICAL = 1; // 세로
-    public static final int NONE = 0;
+    public static final boolean ABLE = true;
+    public static final boolean UNABLE = false;
 
-    private List<Integer> line;
+    private List<Boolean> line;
 
     public Line(int length) {
-        this.line = new ArrayList<Integer>();
+        this.line = new ArrayList<>();
         makeLine(length);
     }
 
     public void makeLine(int length) {
-        for (int i = 0; i < length; i++) {
-            this.line.add(checkLine(i, line));
+        for (int i = 0; i < length - 1; i++) {
+            this.line.add(checkHorizon(randAble(), line));
         }
     }
 
-    public List<Integer> getLine() {
+    public List<Boolean> getLine() {
         return Collections.unmodifiableList(this.line);
     }
 
-    public static int randNum() {
-        return (Math.random() < 0.5) ? NONE : VERTICAL;
+    public static boolean randAble() {
+        return (Math.random() < 0.5) ? UNABLE : ABLE;
     }
 
-    public static int checkHorizon(int randNum, List<Integer> line) {
-        if (randNum == VERTICAL && !(line.contains(HORIZONTAL))) { // randNum이 1이고 이미 가로선을 가지고 있으면 가로를 채운다.
-            return HORIZONTAL;
+    public static boolean checkHorizon(boolean randAble, List<Boolean> line) {
+        if (randAble == ABLE && !(line.contains(true))) { // randNum이 1이고 이미 가로선을 가지고 있으면 가로를 채운다.
+            return true;
         }
-        return NONE;
-    }
-
-    public static int checkLine(int i, List<Integer> line) {
-        if (i % 2 == NONE) {
-            return VERTICAL;
-        }
-        return checkHorizon(randNum(), line);
+        return false;
     }
 
 }
