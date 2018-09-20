@@ -1,4 +1,4 @@
-package laddergame;
+package laddergame.domain;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class LineTest {
 
     @Before
     public void setUp() {
-        this.line = new ArrayList<Integer>();
+        this.line = new ArrayList<>();
         line.add(Line.VERTICAL);
         line.add(Line.NONE);
         line.add(Line.VERTICAL);

@@ -1,9 +1,11 @@
-package laddergame;
+package laddergame.view;
+
+import laddergame.domain.Line;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class LadderMaker {
+public class LadderView {
 
     static final String NONE = "     ";
     static final String HORIZONTAL = "-----";

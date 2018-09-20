@@ -1,13 +1,13 @@
-package laddergame;
+package laddergame.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Line {
-    static final int HORIZONTAL = 2; // 가로
-    static final int VERTICAL = 1; // 세로
-    static final int NONE = 0;
+    public static final int HORIZONTAL = 2; // 가로
+    public static final int VERTICAL = 1; // 세로
+    public static final int NONE = 0;
 
     private List<Integer> line;
 
