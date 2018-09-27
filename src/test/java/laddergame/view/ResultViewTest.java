@@ -15,7 +15,7 @@ public class ResultViewTest {
     List<Position> line;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         int horizonIdx = 1;
         int length = 3;
         line = new ArrayList<Position>();
@@ -26,7 +26,7 @@ public class ResultViewTest {
     }
 
     @Test
-    public void drawLine(){
+    public void drawLine() {
         assertEquals("|     |-----|", ResultView.drawLine(line));
     }
 

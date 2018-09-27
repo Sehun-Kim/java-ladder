@@ -57,7 +57,7 @@ public class ResultView {
     }
 
     public static String checkHorizon(int point, List<Position> line) {
-        if (line.get((point - 1) / 2).getDirection() == Direction.RIGHT) {
+        if (line.get((point - 1) / 2).getDirection().isRight()) {
             return HORIZONTAL;
         }
         return NONE;
